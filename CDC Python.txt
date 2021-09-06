@@ -1,0 +1,102 @@
+# -*- coding: utf-8 -*-
+#File: automobile_final
+#Version 1.0 - 7/04/2020
+#keeps inventory of a dealership
+#copyright Mickayla Sujkowski 7/04/2020 mickaylalee99@gmail.com
+
+#class definition
+class Vehicles:
+    
+    #constructor
+    def __init__(self):
+        self.make = ''
+        self.model = ''
+        self.color = ''
+        self.year = 0
+        self.mileage = 0
+    
+    #adds a new vehicle
+    def add_vehicle(self):
+        self.make = str(input('Enter make: '))
+        self.model = str(input('Enter model: '))
+        self.color = str(input('Enter color: '))
+        self.year = int(input('Enter year: '))
+        self.mileage = int(input('Enter mileage: '))
+        print('You added a', self.make, self.model, 'in', self.color, 'from', self.year, 'with', self.mileage, 'miles.')
+    
+    def contatenate(self):
+        return ('%s %s in %s from %d with %d miles' % (self.make, self.model, self.color, self.year, self.mileage))
+    
+    #removes a vehicle
+    def remove_vehicle(self):
+        del self
+        
+
+#initializes vehicle list and choice variables
+vehicle_inventory = []
+choice = 0
+
+
+print('Which of the following would you like to do?')
+print('1. Add a Vehicle')
+print('2. Delete a Vehicle')
+print('3. Update a Vehicle')
+print('4. View List of Vehicles')
+print('5. Exit program')
+choice = int(input('Input as a number: '))
+
+while choice != 5:
+    
+    #if user chooses to add vehicle
+    if  choice == 1:
+        new = Vehicles()
+        new.add_vehicle()
+        vehicle_inventory.append(new.contatenate())
+        
+    #if user chooses to delete vehicle
+    elif choice ==2:
+        i = 1
+        for vehicle in vehicle_inventory:
+            print(i,'.', vehicle)
+            i += 1
+        deletion = int(input('Which entry would you like to delete? '))
+        del vehicle_inventory[deletion - 1]
+        print('Vehicle removed')
+    
+    #if user chooses to update vehicle
+    elif choice == 3:
+        i = 1
+        for vehicle in vehicle_inventory:
+            print(i,'.', vehicle)
+            i += 1
+        update = int(input('Which entry would you like to update? '))
+        new = Vehicles()
+        new.add_vehicle()
+        vehicle_inventory[update-1] = new.contatenate()
+        print('Vehicle updated')
+        
+    #if user chooses to print vehicle_inventory
+    elif choice == 4:
+        for vehicle in vehicle_inventory:
+            print(vehicle)
+    
+    #repeats at end of loop to check for end of program
+    print('1. Add a Vehicle')
+    print('2. Delete a Vehicle')
+    print('3. Update a Vehicle')
+    print('4. View List of Vehicles')
+    print('5. Exit program')
+    choice = int(input('What would you like to do next: '))
+
+#End of program
+print('Goodbye')
+
+
+
+
+
+
+
+
+
+
